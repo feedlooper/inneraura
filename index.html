@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inner Aura Breathwork</title>
   <meta name="description" content="Soft, grounding breathwork sessions in Vancouver to help you release stress, reconnect with your body, and feel lighter." />
+  <meta property="og:title" content="Inner Aura Breathwork" />
+  <meta property="og:description" content="Gentle, grounded breathwork sessions in Vancouver with Gurleen." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root {
@@ -66,20 +69,22 @@
     }
 
     .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.3rem;
-  letter-spacing: -0.03em;
-  color: var(--lavender-700);
-}
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      letter-spacing: -0.03em;
+      color: var(--lavender-700);
+    }
 
-.brand img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-}
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      color: var(--lavender-700);
+      filter: drop-shadow(0 4px 10px rgba(101, 66, 132, 0.18));
+    }
 
     .nav-links {
       display: flex;
@@ -404,10 +409,18 @@
 <body>
   <header>
     <nav>
-    <a href="#home" class="brand">
-  <img src="images/inner-aura-logo-light.png" alt="Inner Aura Logo">
-  <span>Inner Aura</span>
-</a>
+    <a href="#home" class="brand" aria-label="Inner Aura home">
+      <span>Inner Aura</span>
+      <svg class="brand-logo" viewBox="0 0 120 120" role="img" aria-label="Inner Aura logo" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="54" r="39" fill="none" stroke="currentColor" stroke-width="3" opacity="0.72"/>
+        <path d="M61 18 C72 36 48 44 61 61 C72 76 49 82 57 101" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round"/>
+        <path d="M50 102 C38 87 20 99 24 108 C28 118 48 113 60 101 C72 113 92 118 96 108 C100 99 82 87 70 102" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M60 28 L60 38 M60 46 L60 49" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 16 L63 21 L68 24 L63 27 L60 32 L57 27 L52 24 L57 21 Z" fill="currentColor" opacity="0.8"/>
+        <path d="M25 57 H35 M85 57 H95" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>
+        <path d="M37 48 L20 34 M44 43 L33 25 M50 39 L45 20 M70 39 L75 20 M76 43 L87 25 M83 48 L100 34" stroke="currentColor" stroke-width="1.5" opacity="0.28" stroke-linecap="round"/>
+      </svg>
+    </a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#breathwork">Breathwork</a>
@@ -606,7 +619,7 @@
 
   <footer>
     <p>Inner Aura · Breathwork in Vancouver, BC</p>
-    <p class="tiny">For questions, email: your-email@example.com</p>
+    <p class="tiny">For questions, email: <a href="mailto:gugzzzr@gmail.com">gugzzzr@gmail.com</a></p>
   </footer>
 </body>
 </html>
