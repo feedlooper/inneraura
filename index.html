@@ -66,11 +66,20 @@
     }
 
     .brand {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.3rem;
-      letter-spacing: -0.03em;
-      color: var(--lavender-700);
-    }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  color: var(--lavender-700);
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
 
     .nav-links {
       display: flex;
@@ -395,7 +404,10 @@
 <body>
   <header>
     <nav>
-      <a href="#home" class="brand">Inner Aura</a>
+    <a href="#home" class="brand">
+  <img src="images/inner-aura-logo-light.png" alt="Inner Aura Logo">
+  <span>Inner Aura</span>
+</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#breathwork">Breathwork</a>
@@ -588,7 +600,7 @@
     <section class="footer-cta">
       <h2>Ready to breathe?</h2>
       <p class="lead" style="margin-left:auto; margin-right:auto;">Book a private, couples, or small group breathwork session.</p>
-      <a class="button" href="YOUR_SQUARE_BOOKING_LINK_HERE" target="_blank" rel="noopener">Book your session</a>
+     <a class="button" href="https://book.squareup.com/appointments/46jxti0d0k74lb/location/LJSH3J5N2YA3B/se
     </section>
   </main>
 
