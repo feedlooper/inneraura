@@ -178,23 +178,24 @@ nav{
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- Breathe Section ---------- */
-.breathe-section{padding:70px 28px 60px;text-align:center}
+.breathe-section{padding:90px 28px;text-align:center}
 .breathe-inner{
-  display:inline-flex;align-items:center;gap:18px;
+  display:inline-flex;align-items:center;justify-content:center;gap:32px;
   background:rgba(250,247,254,.92);backdrop-filter:blur(10px);
   border:1px solid rgba(70,49,95,.08);
-  border-radius:22px;
-  padding:22px 26px;
-  box-shadow:var(--shadow-card);
+  border-radius:var(--radius);
+  padding:48px 64px;
+  box-shadow:var(--shadow-soft);
+  max-width:720px;width:100%;
 }
 .breathe-inner .breath-circle{
-  width:58px;height:58px;border-radius:50%;
+  width:90px;height:90px;border-radius:50%;
   background:radial-gradient(circle at 35% 35%,var(--lav-300),var(--lav-500));
   animation:breathe 8s ease-in-out infinite;
   flex:0 0 auto;
 }
-.breathe-inner .breath-text{font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
-.breathe-inner .breath-text strong{display:block;font-family:"Fraunces",serif;font-size:1.06rem;color:var(--plum);font-weight:500;letter-spacing:0}
+.breathe-inner .breath-text{font-size:1.05rem;color:var(--ink-soft);letter-spacing:.04em}
+.breathe-inner .breath-text strong{display:block;font-family:"Fraunces",serif;font-size:1.7rem;color:var(--plum);font-weight:500;letter-spacing:0;margin-bottom:6px}
 
 /* ---------- Hero name ---------- */
 .hero-name{
@@ -420,9 +421,11 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   .hero-name{text-align:center}
   .hero-visual{width:min(100%,440px)}
   .hero-frame img{height:min(60svh,560px)}
-  .breathe-section{padding:50px 28px 40px}
-  .breathe-inner{padding:18px 22px}
-  .breathe-inner .breath-circle{width:48px;height:48px}
+  .breathe-section{padding:60px 28px}
+  .breathe-inner{padding:32px 36px;gap:22px}
+  .breathe-inner .breath-circle{width:64px;height:64px}
+  .breathe-inner .breath-text{font-size:.95rem}
+  .breathe-inner .breath-text strong{font-size:1.3rem}
   .about-grid,.benefits-grid,.faq-grid{grid-template-columns:1fr}
   .about-photo .badge{right:12px}
   .about-photo img{height:520px}
@@ -836,7 +839,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
 <script>
 // ---- Header shadow on scroll
 const header = document.getElementById('header');
-addEventListener('', () => {
+addEventListener('scroll', () => {
   header.classList.toggle('scrolled', scrollY > 24);
 }, {passive:true});
 
