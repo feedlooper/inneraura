@@ -165,27 +165,10 @@ nav{
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,transparent 62%,rgba(52,34,70,.28));
 }
-.breath-widget{
-  position:absolute;left:-64px;bottom:54px;
-  background:rgba(250,247,254,.92);backdrop-filter:blur(10px);
-  border:1px solid rgba(70,49,95,.08);
-  border-radius:22px;
-  padding:22px 26px;
-  box-shadow:var(--shadow-card);
-  display:flex;align-items:center;gap:18px;
-}
-.breath-circle{
-  width:58px;height:58px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,var(--lav-300),var(--lav-500));
-  animation:breathe 8s ease-in-out infinite;
-  flex:0 0 auto;
-}
 @keyframes breathe{
   0%,100%{transform:scale(.72)}
   45%,55%{transform:scale(1.08)}
 }
-.breath-text{font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
-.breath-text strong{display:block;font-family:"Fraunces",serif;font-size:1.06rem;color:var(--plum);font-weight:500;letter-spacing:0}
 .scroll-hint{
   position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
   font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
@@ -193,6 +176,34 @@ nav{
 }
 .scroll-hint span{display:block;width:1px;height:44px;background:linear-gradient(var(--ink-soft),transparent);animation:drop 2.2s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Breathe Section ---------- */
+.breathe-section{padding:70px 28px 60px;text-align:center}
+.breathe-inner{
+  display:inline-flex;align-items:center;gap:18px;
+  background:rgba(250,247,254,.92);backdrop-filter:blur(10px);
+  border:1px solid rgba(70,49,95,.08);
+  border-radius:22px;
+  padding:22px 26px;
+  box-shadow:var(--shadow-card);
+}
+.breathe-inner .breath-circle{
+  width:58px;height:58px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--lav-300),var(--lav-500));
+  animation:breathe 8s ease-in-out infinite;
+  flex:0 0 auto;
+}
+.breathe-inner .breath-text{font-size:.86rem;color:var(--ink-soft);letter-spacing:.04em}
+.breathe-inner .breath-text strong{display:block;font-family:"Fraunces",serif;font-size:1.06rem;color:var(--plum);font-weight:500;letter-spacing:0}
+
+/* ---------- Hero name ---------- */
+.hero-name{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:clamp(1.3rem,2.2vw,1.7rem);
+  color:var(--plum);
+  margin:0 0 18px;
+  letter-spacing:.02em;
+}
 
 /* ---------- Marquee ---------- */
 .marquee{
@@ -275,11 +286,9 @@ nav{
 .benefit-list svg{width:22px;height:22px;stroke:var(--lav-500);flex:0 0 auto;margin-top:4px}
 .benefit-list strong{display:block;font-family:"Fraunces",serif;font-weight:500;font-size:1.14rem;color:var(--plum)}
 .benefit-list span{color:var(--ink-soft);font-size:.95rem}
-.photo-duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.photo-duo .tall{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card)}
-.photo-duo .tall img{height:560px;width:100%;object-fit:cover}
-.photo-duo .short{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);margin-top:70px}
-.photo-duo .short img{height:490px;width:100%;object-fit:cover}
+.photo-duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.photo-duo .frame{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);height:100%}
+.photo-duo .frame img{height:100%;width:100%;object-fit:cover;min-height:480px}
 
 /* ---------- Offerings ---------- */
 .offerings{background:linear-gradient(160deg,var(--plum),var(--plum-deep));color:var(--lav-100);padding:clamp(90px,11vw,150px) 0;position:relative;overflow:hidden}
@@ -408,16 +417,17 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   .hero-copy .lede{margin-inline:auto}
   .hero-actions{justify-content:center}
   .hero-note{justify-content:center}
+  .hero-name{text-align:center}
   .hero-visual{width:min(100%,440px)}
   .hero-frame img{height:min(60svh,560px)}
-  .breath-widget{left:50%;transform:translateX(-50%);bottom:-26px}
+  .breathe-section{padding:50px 28px 40px}
+  .breathe-inner{padding:18px 22px}
+  .breathe-inner .breath-circle{width:48px;height:48px}
   .about-grid,.benefits-grid,.faq-grid{grid-template-columns:1fr}
   .about-photo .badge{right:12px}
   .about-photo img{height:520px}
   .steps,.offer-cards,.quotes{grid-template-columns:1fr}
-  .photo-duo .tall img{height:440px}
-  .photo-duo .short img{height:400px;margin-top:0}
-  .photo-duo .short{margin-top:40px}
+  .photo-duo .frame img{min-height:360px}
   .footer-grid{grid-template-columns:1fr}
 }
 @media (max-width:760px){
@@ -476,19 +486,20 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
     <p class="eyebrow">Breathwork · Vancouver, BC</p>
     <h1>Come home<br />to <em>your breath.</em></h1>
     <p class="lede">
-      Gentle, guided breathwork sessions with Gurleen Randhawa — a soft space to
+      Gentle, guided breathwork sessions with Gurleen Randhawa. A soft space to
       release what your body has been holding, quiet your mind, and leave feeling
       lighter, clearer, and deeply yourself.
     </p>
+    <p class="hero-name">Gurleen Randhawa</p>
     <div class="hero-actions">
+      <a class="btn ghost" href="#about">Meet Gurleen</a>
       <a class="btn" href="https://book.squareup.com/appointments/46jxti0d0k74lb/location/LJSH3J5N2YA3B/services?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleATbJRZwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp4ob3yAGG7WCKTRJpuNJVh_Doq8g1pc6z2h41IidEAlRNMS2kVOO2N4Dt1cA_aem_AWl9csCgeT4TDSA9nG3JKw" target="_blank" rel="noopener">
         Book your session <svg class="arrow" width="18" height="18" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
       </a>
-      <a class="btn ghost" href="#about">Meet Gurleen</a>
     </div>
     <p class="hero-note">
       <svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>
-      Insurance-covered sessions coming soon — Natural Health Practitioner certification in progress
+      Insurance-covered sessions coming soon. Natural Health Practitioner certification in progress
     </p>
   </div>
 
@@ -496,10 +507,6 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
     <div class="hero-frame">
       <!-- REPLACE: images/hero.jpg — a warm, serene portrait of Gurleen (portrait orientation) -->
       <img src="images/hero.jpg" alt="Gurleen Randhawa, breathwork facilitator in Vancouver" />
-    </div>
-    <div class="breath-widget" aria-hidden="true">
-      <div class="breath-circle"></div>
-      <div class="breath-text"><strong id="breathLabel">breathe in…</strong>follow along with me</div>
     </div>
   </div>
 </section>
@@ -513,6 +520,14 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   </div>
 </div>
 
+<!-- ============ BREATHE WITH ME ============ -->
+<section class="breathe-section" id="breathe">
+  <div class="wrap breathe-inner">
+    <div class="breath-circle"></div>
+    <div class="breath-text"><strong id="breathLabel">breathe in…</strong>follow along with me</div>
+  </div>
+</section>
+
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
   <div class="wrap about-grid">
@@ -522,7 +537,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <img src="images/portrait.jpg" alt="Portrait of Gurleen Randhawa" />
       </div>
       <div class="badge">
-        <strong>“Your breath already knows the way.”</strong>
+        <strong>"Your breath already knows the way."</strong>
         I simply help you listen.
       </div>
     </div>
@@ -531,12 +546,12 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
       <h2>Hi, I'm Gurleen —<br />and I'm so glad you're here.</h2>
       <p>
         Breathwork found me, and it changed everything. I knew, deep down, that
-        <strong>helping others through the breath is my life's passion</strong> — and I've
+        <strong>helping others through the breath is my life's passion</strong>, and I've
         devoted myself to it completely.
       </p>
       <p>
         My approach is gentle, intuitive, and deeply personal. I don't believe in
-        one-size-fits-all healing. I listen — really listen — to what <strong>you</strong>
+        one-size-fits-all healing. I listen, really listen, to what <strong>you</strong>
         need from each session, and I hold a warm, judgment-free space for whatever
         arises. Whether you arrive carrying stress, grief, anxiety, or simply
         exhaustion, you'll be met with kindness, patience, and care.
@@ -560,9 +575,9 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   <div class="wrap">
     <div class="expect-head reveal">
       <p class="eyebrow center">The experience</p>
-      <h2>What a session feels like</h2>
+      <h2>What a session feels like.</h2>
       <p class="lede" style="margin:18px auto 0">
-        No experience needed. No pressure. Just you, your breath, and a space
+        No experience needed. No pressure.<br>Just you, your breath, and a space
         where you're fully supported.
       </p>
     </div>
@@ -582,7 +597,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <p>
           Guided by Gurleen's voice and carefully chosen music, you'll move
           through a connected breathing journey. Emotions, tension, and stuck
-          energy are welcome here — this is where they finally get to move.
+          energy are welcome here. This is where they finally get to move.
         </p>
       </div>
       <div class="step reveal" data-delay="2">
@@ -590,7 +605,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <h3>Rest &amp; integrate</h3>
         <p>
           Every session closes with deep rest and gentle integration, so you
-          leave grounded — not raw. Gurleen makes sure you have what you need
+          leave grounded, not raw. Gurleen makes sure you have what you need
           before you go.
         </p>
       </div>
@@ -611,7 +626,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         </li>
         <li>
           <svg viewBox="0 0 24 24"><use href="#i-check"/></svg>
-          <div><strong>Process stored emotions</strong><span>Gently move what words can't reach — grief, tension, old patterns held in the body.</span></div>
+          <div><strong>Process stored emotions</strong><span>Gently move what words can't reach. Grief, tension, old patterns held in the body.</span></div>
         </li>
         <li>
           <svg viewBox="0 0 24 24"><use href="#i-check"/></svg>
@@ -624,11 +639,11 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
       </ul>
     </div>
     <div class="photo-duo reveal" data-delay="1">
-      <div class="tall">
+      <div class="frame">
         <!-- REPLACE: images/session-1.jpg — a photo of a session, the studio, or Gurleen guiding -->
         <img src="images/session-1.jpg" alt="A calm breathwork session in progress" />
       </div>
-      <div class="short">
+      <div class="frame">
         <!-- REPLACE: images/still-1.jpg — a calm detail: candles, tea, studio corner -->
         <img src="images/still-1.jpg" alt="Calm details of the Inner Aura studio space" />
       </div>
@@ -645,7 +660,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <h2>Choose the space<br />that meets you.</h2>
       </div>
       <p>
-        Every offering is held with the same devotion — a safe, nurturing
+        Every offering is held with the same devotion. A safe, nurturing
         container where you are fully supported, exactly as you are.
       </p>
     </div>
@@ -654,7 +669,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <span class="tag">Most personal</span>
         <h3>Private 1:1 Session</h3>
         <p>
-          A fully personalized breathwork journey shaped around you — your story,
+          A fully personalized breathwork journey shaped around you. Your story,
           your nervous system, your intention. Ideal for deep release, first-timers
           who want extra care, or anyone moving through something tender.
         </p>
@@ -665,7 +680,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <h3>Group Breathwork Circle</h3>
         <p>
           Breathe in community. There is something quietly powerful about
-          releasing together — a room full of people choosing to heal, held by
+          releasing together. A room full of people choosing to heal, held by
           Gurleen's steady, compassionate guidance.
         </p>
         <a class="btn light" href="https://book.squareup.com/appointments/46jxti0d0k74lb/location/LJSH3J5N2YA3B/services?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleATbJRZwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp4ob3yAGG7WCKTRJpuNJVh_Doq8g1pc6z2h41IidEAlRNMS2kVOO2N4Dt1cA_aem_AWl9csCgeT4TDSA9nG3JKw" target="_blank" rel="noopener">Book a circle <svg class="arrow" width="18" height="18" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
@@ -683,7 +698,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
     </div>
     <p class="note-line reveal">
       <svg viewBox="0 0 24 24"><use href="#i-info"/></svg>
-      Gurleen is completing her Natural Health Practitioner certification with Hara Breath — sessions will soon be eligible for insurance coverage. Follow along for updates.
+      Gurleen is completing her Natural Health Practitioner certification with Hara Breath. Sessions will soon be eligible for insurance coverage. Follow along for updates.
     </p>
   </div>
 </section>
@@ -693,26 +708,26 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   <div class="wrap">
     <div class="voices-head reveal">
       <p class="eyebrow center">Kind words</p>
-      <h2>What clients are feeling</h2>
+      <h2>What clients are feeling.</h2>
     </div>
     <div class="quotes">
       <figure class="quote reveal">
         <div class="stars" aria-label="5 stars">✦ ✦ ✦ ✦ ✦</div>
-        <p>"I arrived carrying months of stress and left feeling like I could finally exhale. Gurleen made me feel so safe the entire time."</p>
-        <cite>— CLIENT NAME · VANCOUVER</cite>
+        <p>"I didn't know what to expect in my first session with Gurleen, but I went in with an open mind. I was astonished at how present she was during the session and how much transformation took place for me following it. We moved around a lot of energies that had been laying dormant within me and it was very powerful. I would absolutely recommend her to anybody that's curious about breathwork."</p>
+        <cite>— KAITLIN @akashahmusic · VANCOUVER</cite>
       </figure>
       <figure class="quote reveal" data-delay="1">
         <div class="stars" aria-label="5 stars">✦ ✦ ✦ ✦ ✦</div>
-        <p>"Her energy is so warm and grounding. She truly cares about each person in the room — you can feel it in every part of the session."</p>
-        <cite>— CLIENT NAME · VANCOUVER</cite>
+        <p>"Her energy is so warm and grounding. She truly cares about each person in the room. You can feel it in every part of the session. I thought she was very professional and it seemed like she's been doing this for lifetimes. I had an emotional release and felt lighter than I've ever felt before."</p>
+        <cite>— KRIT @kritunmole · SURREY</cite>
       </figure>
       <figure class="quote reveal" data-delay="2">
         <div class="stars" aria-label="5 stars">✦ ✦ ✦ ✦ ✦</div>
-        <p>"I didn't know what to expect from breathwork. It ended up being one of the most healing experiences of my life."</p>
-        <cite>— CLIENT NAME · VANCOUVER</cite>
+        <p>"I didn't know what to expect from breathwork. It ended up being one of the most healing experiences of my life. Her voice is so soothing and calming and I felt very safe. She fosters a trusting environment in which for the first time in my life I had a quiet mind. My thoughts vanished and I think I felt real peace."</p>
+        <cite>— YIMING @zzzyyymmmmmm · RICHMOND</cite>
       </figure>
     </div>
-    <p class="placeholder-note">↑ Replace these with real client testimonials as they come in.</p>
+    <p class="placeholder-note">Client Testimonials.</p>
   </div>
 </section>
 
@@ -721,21 +736,21 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
   <div class="wrap faq-grid">
     <div class="reveal">
       <p class="eyebrow">Questions</p>
-      <h2>Everything you might be wondering</h2>
+      <h2>Everything you might be wondering.</h2>
       <p class="lede" style="margin-top:18px">
         Still curious? Reach out on
-        <a href="https://www.instagram.com/gugzzr/" target="_blank" rel="noopener" style="color:var(--lav-500);border-bottom:1px solid var(--lav-400)">Instagram</a>
-        — Gurleen loves hearing from you.
+        <a href="https://www.instagram.com/gugzzr/" target="_blank" rel="noopener" style="color:var(--lav-500);border-bottom:1px solid var(--lav-400)">Instagram</a>.
+        Gurleen loves hearing from you.
       </p>
     </div>
     <div class="reveal" data-delay="1">
       <details class="faq-item" open>
         <summary>I've never done breathwork. Is it for me?<span class="plus">+</span></summary>
-        <p>Absolutely — most of Gurleen's clients are brand new. Sessions are gentle, guided the whole way through, and always move at your pace. There is nothing to get "right" and no experience needed.</p>
+        <p>Absolutely. Most of Gurleen's clients are brand new. Sessions are gentle, guided the whole way through, and always move at your pace. There is nothing to get "right" and no experience needed.</p>
       </details>
       <details class="faq-item">
         <summary>What should I bring or wear?<span class="plus">+</span></summary>
-        <p>Wear comfortable, cozy clothing you can breathe and lie down in. Bring water, and if you like, a journal for afterwards. Everything else — mats, blankets, bolsters, eye masks — is taken care of.</p>
+        <p>Wear comfortable, cozy clothing you can breathe and lie down in. Bring water, and if you like, a journal for afterwards. Everything else is taken care of: mats, blankets, bolsters, and eye masks.</p>
       </details>
       <details class="faq-item">
         <summary>What might I feel during a session?<span class="plus">+</span></summary>
@@ -782,7 +797,7 @@ footer{background:var(--plum-deep);color:rgba(243,236,252,.7);padding:70px 28px 
         <span>inner <em>aura</em></span>
       </p>
       <p class="footer-brand-sub">
-        Gentle, guided breathwork in Vancouver, BC — helping you release,
+        Gentle, guided breathwork in Vancouver, BC. Helping you release,
         reconnect, and come home to yourself.
       </p>
       <p class="footer-tag">Breathe. Release. Rise.</p>
